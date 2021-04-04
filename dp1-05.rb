@@ -1,13 +1,16 @@
-def solve(k)
-  tmp_arr = []
+# 3項間漸化式 1 (paizaランク B 相当)
+# https://paiza.jp/works/mondai/dp_primer/dp_primer_recursive_formula_step4
+
+def solve(input_data)
+  k = input_data.to_i
+
+  dp = []
   (1..k).each do |n|
-    if n <= 2
-      tmp_arr << 1
-    else
-      tmp_arr << tmp_arr[-2] + tmp_arr[-1]
-    end
+    dp <<= n > 2 ? dp[-2] + dp[-1] : 1
   end
-  tmp_arr[-1]
+  dp[-1]
 end
 
-puts solve(gets.to_i)
+#puts solve(STDIN.read)
+in1 = "7\n"
+puts solve(in1)

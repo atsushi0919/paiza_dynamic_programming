@@ -1,20 +1,21 @@
-def solve(line)
-  q, *k = line.split("\n").map(&:to_i)
+# 3項間漸化式 2 (paizaランク B 相当)
+# https://paiza.jp/works/mondai/dp_primer/dp_primer_recursive_formula_boss
+
+def solve(input_data)
+  q, *k = input_data.split("\n").map(&:to_i)
 
   result = []
   k.each do |i|
-    tmp_arr = []
+    dp = []
     (1..i).each do |n|
-      if n <= 2
-        tmp_arr << 1
-      else
-        tmp_arr << tmp_arr[-2] + tmp_arr[-1]
-      end
+      dp <<= n > 2 ? dp[-2] + dp[-1] : 1
     end
-    result << tmp_arr[-1]
+    result << dp[-1]
   end
   result
 end
+
+#puts solve(STDIN.read)
 
 in1 = <<~"EOS"
   5
@@ -24,14 +25,11 @@ in1 = <<~"EOS"
   4
   3
 EOS
-
-out1 = <<~"EOS"
+ans1 = <<~"EOS"
   1
   1
   2
   3
   2
 EOS
-
 puts solve(in1)
-#puts solve(STDIN.read)

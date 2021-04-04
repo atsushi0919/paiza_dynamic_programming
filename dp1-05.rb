@@ -12,5 +12,7 @@ def solve(input_data)
 end
 
 #puts solve(STDIN.read)
+
 in1 = "7\n"
+res1 = 13
 puts solve(in1)

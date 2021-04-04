@@ -16,5 +16,5 @@ end
 #puts solve(STDIN.read)
 
 in1 = "4 2 110 5 200\n"
-ans1 = "200"
+res1 = 200
 puts solve(in1)

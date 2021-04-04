@@ -1,3 +1,6 @@
+# 最長増加連続部分列 (paizaランク B 相当)
+# https://paiza.jp/works/mondai/dp_primer/dp_primer_lis_continuous_step0
+
 def solve(input_data)
   n, *a = input_data.split("\n").map(&:to_i)
 
@@ -8,6 +11,15 @@ def solve(input_data)
   dp.max
 end
 
-puts solve(STDIN.read)
-#in1 = "5\n160\n178\n170\n190\n190\n"
-#puts solve(in1)
+#puts solve(STDIN.read)
+
+in1 = <<~"EOS"
+  5
+  160
+  178
+  170
+  190
+  190
+EOS
+ans1 = 3
+puts solve(in1)

@@ -25,11 +25,5 @@ in1 = <<~"EOS"
   4
   3
 EOS
-ans1 = <<~"EOS"
-  1
-  1
-  2
-  3
-  2
-EOS
+res1 = [1,1,2,3,2]
 puts solve(in1)

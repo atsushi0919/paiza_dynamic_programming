@@ -13,7 +13,7 @@ def solve(input_data)
       end
     end
   end
-  dp
+  dp.max
 end
 
 #puts solve(STDIN.read)
@@ -27,4 +27,4 @@ in1 = <<~"EOS"
   1999
 EOS
 ans1 = 3
-p solve(in1)
+puts solve(in1)

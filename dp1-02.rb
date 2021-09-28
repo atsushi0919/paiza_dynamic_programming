@@ -6,7 +6,7 @@ def solve(input_data)
 
   k.map do |n|
     a = [x]   # n = 1
-    (n - 1).times do |i|
+    (n - 1).times do
       a << a[-1] + d   # n >= 2
     end
     a[-1]

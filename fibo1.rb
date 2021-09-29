@@ -36,7 +36,7 @@ def fib2(n)
   # puts "$memo[#{n}] = #{a} + #{b} = #{c}, return #{c}"
 
   # 計算結果を$memoに保存して返す
-  return $memo[n] = c
+  $memo[n] = c
 end
 
 #$memo = [0, 1]

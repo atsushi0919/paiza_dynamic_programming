@@ -9,8 +9,8 @@ def merge_sort(ary, count = 0)
   return [ary, count] if al == 1
 
   mid = al / 2
-  ary_l, cl = merge_sort(ary[..mid - 1], count)
-  ary_r, cr = merge_sort(ary[mid..], count)
+  ary_l, cl = merge_sort(ary[..mid - 1])
+  ary_r, cr = merge_sort(ary[mid..])
   count = cl + cr
 
   # 分割した要素を昇順で統合していく

@@ -1,24 +1,15 @@
-INPUT1 = <<~"EOS"
-  10
-  8 5 9 2 6 3 7 1 10 4
-EOS
-
-def merge_sort(ary, count = 0)
+def merge_sort(ary)
   # 要素が 1 個になるまで分割する
   al = ary.length
-  return [ary, count] if al == 1
+  return ary if al == 1
 
   mid = al / 2
-  ary_l, cl = merge_sort(ary[..mid - 1])
-  ary_r, cr = merge_sort(ary[mid..])
-  count = cl + cr
+  ary_l = merge_sort(ary[..mid - 1])
+  ary_r = merge_sort(ary[mid..])
 
-  # 分割した要素を昇順で統合していく
+  # 分割した要素をマージする
   sorted_ary = []
   while ary_l.length > 0 || ary_r.length > 0
-    # 比較回数
-    count += 1
-
     sorted_ary <<
     if ary_l.length == 0
       ary_r.shift
@@ -30,9 +21,8 @@ def merge_sort(ary, count = 0)
       ary_l.shift
     end
   end
-  [sorted_ary, count]
+  sorted_ary
 end
 
-ary = [8, 5, 9, 2, 6, 3, 7, 1, 4]
-
-p merge_sort(ary)
+p merge_sort([8, 5, 9, 2, 6, 3, 7, 1, 4])
+# > [1, 2, 3, 4, 5, 6, 7, 8, 9]

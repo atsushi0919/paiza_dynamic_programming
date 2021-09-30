@@ -8,11 +8,11 @@ def solve(input_data)
   (k - 1).times do
     dp << dp[-1] + d
   end
-  dp[-1]
+  dp
 end
 
 #puts solve(STDIN.read)
 
 in1 = "0 7 9\n"
 res1 = 56
-puts solve(in1)
+p solve(in1)

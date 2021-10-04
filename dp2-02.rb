@@ -29,5 +29,6 @@ end
 
 puts solve(STDIN.read)
 
+# 確認用コード
 # p solve(INPUT1)
 # > 3

@@ -11,9 +11,11 @@ EOS
 def solve(input_data)
   x, d1, d2, k = input_data.split.map(&:to_i)
 
+  # dpテーブル初期化
   # n = 1 : x
   dp = [x]
 
+  # dpテーブル更新
   # n >= 2
   (k - 1).times do
     dp << if dp.size.even?
@@ -25,7 +27,7 @@ def solve(input_data)
     end
   end
 
-  # k 項の値
+  # k 項の値を返す
   dp[k - 1]
 end
 

@@ -11,16 +11,18 @@ EOS
 def solve(input_data)
   k = input_data.to_i
 
+  # dpテーブル初期化
   # n = 1 : 1
   # n = 2 : 1
   dp = [1, 1]
 
+  # dpテーブル更新
   # n >= 3 : dp[n - 2] + dp[n - 1]
   (k - 2).times do |n|
     dp << dp[-2] + dp[-1]
   end
 
-  # k 項の値
+  # k 項の値を返す
   dp[k - 1]
 end
 

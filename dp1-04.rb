@@ -21,12 +21,14 @@ EOS
 def solve(input_data)
   x, d1, d2, q, *ary_k = input_data.split.map(&:to_i)
 
+  # dpテーブル初期化
   # n = 1 : x
   dp = [x]
 
   # 最大の項
   k_max = ary_k.max
 
+  # dpテーブル更新
   # n >= 2
   (ary_k.max - 1).times do
     dp << if dp.size.even?

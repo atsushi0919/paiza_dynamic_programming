@@ -23,7 +23,7 @@ def solve(input_data)
     dp[i] += dp[i - 2] if i >= 2
   end
 
-  # n 段目に行く方法
+  # n 段目に行く経路数を返す
   dp[n]
 end
 

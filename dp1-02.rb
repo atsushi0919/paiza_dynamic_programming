@@ -21,13 +21,14 @@ EOS
 def solve(input_data)
   x, d, q, *ary_k = input_data.split.map(&:to_i)
 
+  # dpテーブル初期化
   # n = 1 : x
   dp = [x]
 
   # 最大の項
   k_max = ary_k.max
 
-  # n = 2 から n = k_max までの値を求める
+  # dpテーブル更新
   # n <= 2 : dp[n - 1] + d
   (k_max - 1).times do
     dp << dp[-1] + d

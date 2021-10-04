@@ -20,6 +20,7 @@ EOS
 def solve(input_data)
   q, *ary_k = input_data.split("\n").map(&:to_i)
 
+  # dpテーブル初期化
   # n = 1 : 1
   # n = 2 : 1
   dp = [1, 1]
@@ -27,6 +28,7 @@ def solve(input_data)
   # 最大の項
   k_max = ary_k.max
 
+  # dpテーブル更新
   # n >= 3 : dp[n - 2] + dp[n - 1]
   (k_max - 2).times do |n|
     dp << dp[-2] + dp[-1]

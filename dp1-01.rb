@@ -11,15 +11,17 @@ EOS
 def solve(input_data)
   x, d, k = input_data.split.map(&:to_i)
 
+  # dpテーブル初期化
   # n = 1 : x
   dp = [x]
 
+  # dpテーブル更新
   # n >= 2 : dp[n - 1] + d
   (k - 1).times do
     dp << dp[-1] + d
   end
 
-  # k 項の値
+  # k 項の値を返す
   dp[k - 1]
 end
 

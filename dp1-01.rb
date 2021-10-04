@@ -20,10 +20,10 @@ def solve(input_data)
   end
 
   # k 項の値
-  dp[-1]
+  dp[k - 1]
 end
 
-puts solve(STDIN.read)
+p solve(STDIN.read)
 
 # 確認用コード
 # puts solve(INPUT1)

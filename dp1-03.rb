@@ -26,7 +26,7 @@ def solve(input_data)
   end
 
   # k 項の値
-  dp[-1]
+  dp[k - 1]
 end
 
 puts solve(STDIN.read)

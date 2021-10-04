@@ -1,21 +1,35 @@
 # 階段の上り方 3 (paizaランク B 相当)
 # https://paiza.jp/works/mondai/dp_primer/dp_primer_stairs_boss
 
+INPUT1 = <<~"EOS"
+  10 2 3 4
+EOS
+OUTPUT1 = <<~"EOS"
+  17
+EOS
+
 def solve(input_data)
   n, a, b, c = input_data.split.map(&:to_i)
 
-  dp = [1]
-  (1..n).each do |i|
-    dp[i] = 0
-    dp[i] = dp[i] + dp[i - a] if i >= a  # i-a 段目から1段上って i 段へ到達
-    dp[i] = dp[i] + dp[i - b] if i >= b  # i-b 段目から2段上って i 段へ到達
-    dp[i] = dp[i] + dp[i - c] if i >= c  # i-c 段目から2段上って i 段へ到達
+  # dpテーブル初期化
+  # 0段目には上らなくても到達できる
+  dp = [1] + [0] * n
+
+  # dpテーブル更新
+  1.upto(n) do |i|
+    # i-a 段目から a 段上って i 段へ到達
+    dp[i] += dp[i - a] if i >= a
+    # i-b 段目から b 段上って i 段へ到達
+    dp[i] += dp[i - b] if i >= b
+    # i-c 段目から c 段上って i 段へ到達
+    dp[i] += dp[i - c] if i >= c
   end
-  dp[-1]
+
+  # n 段目に行く方法
+  dp[n]
 end
 
-#puts solve(STDIN.read)
+puts solve(STDIN.read)
 
-in1 = "10 2 3 4\n"
-res1 = 17
-puts solve(in1)
+# puts solve(INPUT1)
+# > 17

@@ -40,7 +40,7 @@ def solve(input_data)
     end
   end
 
-  # ary_k の先頭から順に項の値を返す
+  # ary_k の先頭から順に k 項の値を返す
   ary_k.map { |k| dp[k - 1] }
 end
 

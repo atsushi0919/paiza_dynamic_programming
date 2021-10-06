@@ -18,8 +18,8 @@ OUTPUT1 = <<~"EOS"
   11
 EOS
 
-def solve(input_data)
-  x, d1, d2, q, *ary_k = input_data.split.map(&:to_i)
+def solve(input_lines)
+  x, d1, d2, q, *ary_k = input_lines.split.map(&:to_i)
 
   # dpテーブル初期化
   # n = 1 : x

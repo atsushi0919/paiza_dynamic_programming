@@ -28,7 +28,7 @@ def solve(input_data)
   dp[n..].min
 end
 
-#puts solve(STDIN.read)
+puts solve(STDIN.read)
 
 # 確認用コード
 # puts solve(INPUT1)

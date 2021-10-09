@@ -1,30 +1,39 @@
 # 最長部分増加列 (paizaランク B 相当)
 # https://paiza.jp/works/mondai/dp_primer/dp_primer_lis_step0
 
-def solve(input_data)
-  n, *a = input_data.split("\n").map(&:to_i)
-
-  dp = [1]
-  (1...n).each do |i|
-    dp[i] = 1  # 木 i のみからなる部分列の長さ
-    (0...i).each do |j|
-      if a[j] < a[i]
-        dp[i] = [dp[i], dp[j] + 1].max  # 最後が木 j であるような増加部分列の末尾に木 i をくっつける
-      end
-    end
-  end
-  dp.max
-end
-
-#puts solve(STDIN.read)
-
-in1 = <<~"EOS"
+INPUT1 = <<~"EOS"
   5
   100
   102
   101
   91
-  1999
+  199
 EOS
-ans1 = 3
-puts solve(in1)
+OUTPUT1 = <<~"EOS"
+  3
+EOS
+
+def solve(input_lines)
+  # 入力受け取り
+  n, *a = input_lines.split("\n").map(&:to_i)
+
+  # dpテーブル初期化
+  dp = [1]
+
+  # dpテーブル更新
+  1.upto(n - 1) do |i|
+    # 木 i のみからなる部分列の長さ
+    dp[i] = 1
+    0.upto(i - 1) do |j|
+      if a[j] < a[i]
+        # 最後が木 j であるような増加部分列の末尾に木 i をくっつける
+        dp[i] = [dp[i], dp[j] + 1].max
+      end
+    end
+  end
+
+  # 最大値を返す
+  dp.max
+end
+
+puts solve(STDIN.read)

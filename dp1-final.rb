@@ -17,8 +17,8 @@ OUTPUT1 = <<~"EOS"
   2
 EOS
 
-def solve(input_data)
-  q, *ary_k = input_data.split("\n").map(&:to_i)
+def solve(input_lines)
+  q, *ary_k = input_lines.split("\n").map(&:to_i)
 
   # dpテーブル初期化
   # n = 1 : 1
@@ -34,9 +34,13 @@ def solve(input_data)
     dp << dp[-2] + dp[-1]
   end
 
-  # ary_k の先頭から順に項の値を返す
-  ary_k.map { |k| dp[k - 1] }
+  # ary_k の先頭から順に k 項の値を返した結果を改行区切りの配列にして末尾に改行を追加
+  ary_k.map { |k| dp[k - 1] }.join("\n") << "\n"
 end
+
+puts solve(STDIN.read)
+
+exit
 
 puts solve(STDIN.read)
 

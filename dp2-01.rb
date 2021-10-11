@@ -21,13 +21,16 @@ def solve(input_data)
     dp[i] += dp[i - 1] if i >= 1
     # i-2 段目から2段上って i 段へ到達
     dp[i] += dp[i - 2] if i >= 2
+
+    # 確認用コード
+    # p dp
   end
 
   # n 段目に行く経路数を返す
   dp[n]
 end
 
-puts solve(STDIN.read)
+puts solve(INPUT1)
 
 # 確認用コード
 # p solve(INPUT1)

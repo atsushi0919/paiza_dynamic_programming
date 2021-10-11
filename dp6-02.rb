@@ -16,7 +16,7 @@ def solve(input_data)
       end
     end
   end
-  dp[-1][-1] % MOD
+  dp
 end
 
 MOD = 1000000007
@@ -31,7 +31,7 @@ in1 = <<~"EOS"
   2
 EOS
 ans1 = 3
-puts solve(in1)
+pp solve(in1)
 
 =begin
 1 ~ n の番号がついた n 個のおもりがあり、おもり i の重さは a_i です。

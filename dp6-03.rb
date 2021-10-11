@@ -16,7 +16,7 @@ def solve(input_data)
       end
     end
   end
-  dp[-1][-1] < INF ? dp[-1][-1] : -1
+  dp
 end
 
 INF = 1.0 / 0
@@ -31,7 +31,7 @@ in1 = <<~"EOS"
   2
 EOS
 ans1 = 2
-puts solve(in1)
+p solve(in1)
 
 =begin
 1 ~ n の番号がついた n 個のおもりがあり、おもり i の重さは a_i です。

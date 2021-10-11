@@ -1,6 +1,18 @@
 # 部分和問題 1 (paizaランク B 相当)
 # https://paiza.jp/works/mondai/dp_primer/dp_primer_partial_sums_step0
 
+INPUT1 = <<~"EOS"
+  5 19
+  7
+  18
+  5
+  4
+  8
+EOS
+OUTPUT1 = <<~"EOS"
+  yes
+EOS
+
 def solve(input_lines)
   # 入力受け取り
   input_lines = input_lines.split("\n")
@@ -9,30 +21,32 @@ def solve(input_lines)
 
   # dpテーブル初期化
   dp = Array.new(x + 1, false)
-  # おもりを選ばなければ、重さの和を0とすることができる
+  # おもりを選ばなければ重さの和を0とすることができる
   dp[0] = true
 
   # dpテーブル更新
-  0.upto(n - 1) do |i|
-    x.downto(a[i]) do |j|
-      dp[j] = true if dp[j - a[i]]
+  1.upto(n) do |i|
+    x.downto(a[i - 1]) do |j|
+      # a[i-1] を使って j が作れるか
+      dp[j] = true if dp[j - a[i - 1]]
     end
+    break if dp[x]
   end
+
+  # x が作れるかを出力
   dp[x] ? "yes" : "no"
 end
 
-#puts solve(STDIN.read)
+puts solve(STDIN.read)
 
-in1 = <<~"EOS"
-  5 19
-  7
-  18
-  5
-  4
-  8
-EOS
-ans1 = "yes"
-puts solve(in1)
+#        | j
+#  i     | 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 |
+#  - ( 0)| t, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f |
+# [1]( 7)| t, f, f, f, f, f, f, t, f, f, f, f, f, f, f, f, f, f, f, f |
+# [2](18)| t, f, f, f, f, f, f, t, f, f, f, f, f, f, f, f, f, f, t, f |
+# [3]( 5)| t, f, f, f, f, t, f, t, f, f, f, f, t, f, f, f, f, f, t, f |
+# [4]( 4)| t, f, f, f, t, t, f, t, f, t, f, t, t, f, f, f, t, f, t, f |
+# [5]( 8)| t, f, f, f, t, t, f, t, t, t, f, t, t, t, f, t, t, t, t, t |
 
 =begin
 1 ~ n の番号がついた n 個のおもりがあり、おもり i の重さは a_i です。

@@ -21,10 +21,10 @@ def solve(input_data)
   end
 
   # n 個購入時の最安値を返す
-  dp[n]
+  dp
 end
 
-puts solve(STDIN.read)
+p solve(INPUT1)
 
 # 確認用コード
 # puts solve(INPUT1)

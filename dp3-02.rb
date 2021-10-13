@@ -21,14 +21,15 @@ def solve(input_data)
     tmp_b = i > 5 ? dp[i - 5] + b : b
 
     # 2個買った場合と5個買った場合で安い方を記録する
+    p [i, tmp_a, tmp_b]
     dp << [tmp_a, tmp_b].min
   end
 
   # n 個以上購入時の最安値を返す
-  dp[n..].min
+  dp
 end
 
-puts solve(STDIN.read)
+p solve(INPUT1)
 
 # 確認用コード
 # puts solve(INPUT1)

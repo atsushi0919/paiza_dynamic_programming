@@ -8,29 +8,26 @@ OUTPUT1 = <<~"EOS"
   375
 EOS
 
-def solve(input_data)
-  n, x, a, y, b, z, c = input_data.split.map(&:to_i)
+def solve(input_lines)
+  n, x, a, y, b, z, c = input_lines.split.map(&:to_i)
 
   # dpテーブル初期化
   # 0 個購入: 0 円
   dp = [0]
 
   # dpテーブル更新
-  1.upto(n + [a, b, c].max) do |i|
-    tmp_a = i > x ? dp[i - x] + a : a
-    tmp_b = i > y ? dp[i - y] + b : b
-    tmp_c = i > z ? dp[i - z] + c : c
+  1.upto(n + [x, y, z].max) do |i|
+    dp_a = i > x ? dp[i - x] + a : a
+    dp_b = i > y ? dp[i - y] + b : b
+    dp_c = i > z ? dp[i - z] + c : c
 
     # x 個, y 個, z個 買った場合の最安値を記録する
-    dp << [tmp_a, tmp_b, tmp_c].min
+    dp << [dp_a, dp_b, dp_c].min
   end
 
-  # n 個以上購入時の最安値を返す
-  dp[n..].min
+  # n個以上購入時の最安値を返す
+  #dp[n..].min.to_s << "\n"
+  dp
 end
 
-puts solve(STDIN.read)
-
-# 確認用コード
-# puts solve(INPUT1)
-# > 375
+p solve(INPUT1)

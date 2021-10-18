@@ -26,8 +26,8 @@ def solve(input_lines)
     dp[i] = a[i - 1] >= a[i] ? dp[i - 1] + 1 : 1
   end
 
-  # dpの最大値（最大区間数）を返す
-  dp.max
+  # dpの最大値（最大区間数）を文字列に変換し末尾に改行を追加
+  dp.max.to_s << "\n"
 end
 
 puts solve(STDIN.read)

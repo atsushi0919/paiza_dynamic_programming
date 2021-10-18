@@ -13,9 +13,9 @@ OUTPUT1 = <<~"EOS"
   4
 EOS
 
-def solve(input_data)
+def solve(input_lines)
   # 入力受け取り
-  n, *a = input_data.split("\n").map(&:to_i)
+  n, *a = input_lines.split("\n").map(&:to_i)
 
   # dpテーブル初期化
   dp = [1]

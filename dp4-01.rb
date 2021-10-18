@@ -19,21 +19,21 @@ def solve(input_lines)
 
   # dpテーブル初期化
   dp = [1]
-
   # dpテーブル更新
-  # 前の値以上ならカウントアップ
-  # そうでないならカウント 1 にもどる
+  # 前項の値以上ならdpテーブルをカウントアップ
+  # そうでないならdpテーブルを 1 にもどす
   1.upto(n - 1) do |i|
     dp[i] = a[i - 1] <= a[i] ? dp[i - 1] + 1 : 1
   end
 
-  # 最長の値を返す
+  # dpの最大値（最大区間数）を返す
   dp.max
 end
 
 puts solve(STDIN.read)
 
-#puts solve(INPUT1)
+# puts solve(INPUT1)
+# > 3
 
 =begin
 最長増加連続部分列 (paizaランク B 相当)
@@ -44,7 +44,8 @@ https://paiza.jp/works/mondai/dp_primer/dp_primer_lis_continuous_step0
 問題文のURLをコピーする
  下記の問題をプログラミングしてみよう！
 n 人が横一列に並んでいます。左から i 番目の人を人 i と呼ぶことにします。人 i の身長は a_i [cm]です。
-人 l ,人 l+1, ... , 人 r からなる区間 [l, r] について、すべての l ≦ i < r に対して a_i ≦ a_{i+1} が成り立っているとき、
+人 l ,人 l+1, ... , 人 r からなる区間 [l, r] について、
+すべての l ≦ i < r に対して a_i ≦ a_{i+1} が成り立っているとき、
 区間 [l, r] は背の順であると呼ぶことにします。また、区間 [l, r] の長さを r-l+1 とします。
 背の順であるような区間のうち、最長であるものの長さを出力してください。
 

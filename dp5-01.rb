@@ -19,7 +19,6 @@ def solve(input_lines)
 
   # dpテーブル初期化
   dp = [1]
-
   # dpテーブル更新
   1.upto(n - 1) do |i|
     # 木 i のみからなる部分列の長さ

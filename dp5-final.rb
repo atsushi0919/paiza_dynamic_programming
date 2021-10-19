@@ -18,12 +18,10 @@ def solve(input_lines)
   n, *a = input_lines.split("\n").map(&:to_i)
 
   # dpテーブル初期化
-  dp = [1]
+  dp = [1] * n
 
   # dpテーブル更新
   1.upto(n - 1).each do |i|
-    # 木 i のみからなる部分列の長さ
-    dp[i] = 1
     0.upto(i - 1).each do |j|
       if a[j] > a[i]
         # 最後が木 j であるような減少部分列の末尾に木 i をくっつける
@@ -36,4 +34,8 @@ def solve(input_lines)
   dp.max
 end
 
-puts solve(STDIN.read)
+# puts solve(STDIN.read)
+
+# 確認用コード
+puts solve(INPUT1)
+# > 4

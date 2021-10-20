@@ -30,12 +30,8 @@ def solve(input_lines)
     end
   end
 
-  # 最大値を返す
-  dp.max
+  # 減少部分列が最大になる区間の長さを文字列に変換し末尾に改行を追加
+  dp.max.to_s << "\n"
 end
 
-# puts solve(STDIN.read)
-
-# 確認用コード
-puts solve(INPUT1)
-# > 4
+puts solve(STDIN.read)

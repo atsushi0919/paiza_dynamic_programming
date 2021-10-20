@@ -1,6 +1,17 @@
 # 部分和問題 1 (paizaランク B 相当)
 # https://paiza.jp/works/mondai/dp_primer/dp_primer_partial_sums_step0
 
+INPUT0 = <<~"EOS"
+  4 9
+  3
+  2
+  5
+  6
+EOS
+OUTPUT0 = <<~"EOS"
+  yes
+EOS
+
 INPUT1 = <<~"EOS"
   5 19
   7
@@ -20,9 +31,8 @@ def solve(input_lines)
   *a = input_lines.map(&:to_i)
 
   # dpテーブル初期化
-  dp = Array.new(x + 1, false)
   # おもりを選ばなければ重さの和を0とすることができる
-  dp[0] = true
+  dp = [true] + [false] * x
 
   # dpテーブル更新
   1.upto(n) do |i|
@@ -38,6 +48,10 @@ def solve(input_lines)
 end
 
 puts solve(STDIN.read)
+
+# 確認用コード
+# puts solve(INPUT1)
+# > yes
 
 #        | j
 #  i     | 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 |

@@ -20,9 +20,8 @@ def solve(input_lines)
   *a = input_lines.map(&:to_i)
 
   # dpテーブル初期化
-  dp = Array.new(x + 1, 1.0 / 0)
+  dp = [0] + [1.0 / 0] * x
   # おもりを選ばなければ重さの和 0 を作ることができる
-  dp[0] = 0
 
   # dpテーブル更新
   1.upto(n) do |i|

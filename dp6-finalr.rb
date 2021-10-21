@@ -20,15 +20,13 @@ def solve(input_lines)
   *a = input_lines.map(&:to_i)
 
   # dpテーブル初期化
-  dp = Array.new(x + 1, 0)
   # おもりを選ばなければ重さの和 0 作ることができる
-  dp[0] = 1
+  dp = [1] + [0] * x
 
   # dpテーブル更新
   0.upto(n - 1) do |i|
-    # おもりを複数個使用するため順方向にサーチする
     a[i].upto(x) do |j|
-      # a[i-1] を使って j を作れる組み合わせを足す
+      # a[i-1] を使って おもさ j を作れる組み合わせを足す
       dp[j] += dp[j - a[i]]
     end
   end

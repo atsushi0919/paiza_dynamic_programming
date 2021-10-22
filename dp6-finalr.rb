@@ -21,7 +21,7 @@ def solve(input_lines)
 
   # dpテーブル初期化
   # おもりを選ばなければ重さの和 0 作ることができる
-  dp = [1] + [0] * x
+  dp = [true] + [false] * x
 
   # dpテーブル更新
   0.upto(n - 1) do |i|
@@ -29,6 +29,7 @@ def solve(input_lines)
       # a[i-1] を使って おもさ j を作れる組み合わせを足す
       dp[j] += dp[j - a[i]]
     end
+    # break if dp[x] > 0
   end
 
   # x が作れるかを出力
